@@ -14,6 +14,6 @@ import com.plcoding.habittracker.data.local.entity.HabitEntity
     exportSchema = false
 )
 abstract class HabitDatabase : RoomDatabase() {
-    abstract val habitDao: HabitDao
-    abstract val habitCompletionDao: HabitCompletionDao
+    abstract fun habitDao(): HabitDao
+    abstract fun habitCompletionDao(): HabitCompletionDao
 }

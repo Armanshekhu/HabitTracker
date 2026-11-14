@@ -53,21 +53,21 @@ val customColors = CustomColors(
     border = Border
 )
 
-@Composable
-fun HabitTrackerTheme(
-    content: @Composable () -> Unit
-) {
-    CompositionLocalProvider(LocalCustomColors provides customColors) {
-        MaterialTheme(
-            colorScheme = DarkColorScheme,
-            typography = Typography,
-            content = content
-        )
-    }
-}
-
 object HabitTrackerTheme {
     val colors: CustomColors
         @Composable
         get() = LocalCustomColors.current
+
+    @Composable
+    operator fun invoke(
+        content: @Composable () -> Unit
+    ) {
+        CompositionLocalProvider(LocalCustomColors provides customColors) {
+            MaterialTheme(
+                colorScheme = DarkColorScheme,
+                typography = AppTypography,
+                content = content
+            )
+        }
+    }
 }

@@ -30,13 +30,13 @@ object AppModule {
     @Provides
     @Singleton
     fun provideHabitDao(db: HabitDatabase): HabitDao {
-        return db.habitDao
+        return db.habitDao()
     }
 
     @Provides
     @Singleton
     fun provideHabitCompletionDao(db: HabitDatabase): HabitCompletionDao {
-        return db.habitCompletionDao
+        return db.habitCompletionDao()
     }
 
     @Provides

@@ -18,7 +18,7 @@ val Manrope = FontFamily(
     Font(R.font.manrope, FontWeight.ExtraBold) // 800
 )
 
-val Typography = Typography(
+val AppTypography = Typography(
     displaySmall = TextStyle(
         fontFamily = Manrope,
         fontWeight = FontWeight.ExtraBold,
@@ -51,3 +51,5 @@ val Typography = Typography(
         fontSize = 16.sp
     )
 )
+
+val Typography = AppTypography

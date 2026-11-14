@@ -20,8 +20,8 @@ interface HabitDao {
     suspend fun insertHabit(habit: HabitEntity): Long
 
     @Update
-    suspend fun updateHabit(habit: HabitEntity)
+    suspend fun updateHabit(habit: HabitEntity): Int
 
     @Query("DELETE FROM habits WHERE id = :id")
-    suspend fun deleteHabit(id: Long)
+    suspend fun deleteHabit(id: Long): Int
 }
