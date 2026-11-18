@@ -143,4 +143,62 @@ class StreakCalculatorTest {
         assertEquals(2, currentStreak)
         assertEquals(4, bestStreak)
     }
+
+    @Test
+    fun `habit created today has streak 1 when completed today and 0 when not`() {
+        val today = LocalDate.of(2026, 4, 6) // Monday
+        val habit = Habit(
+            id = 1,
+            name = "Yoga",
+            icon = HabitIcon.YOGA,
+            frequency = setOf(DayOfWeek.MONDAY),
+            createdAt = today
+        )
+
+        val completedTodayStreak = StreakCalculator.calculateCurrentStreak(habit, setOf(today), today)
+        val notCompletedTodayStreak = StreakCalculator.calculateCurrentStreak(habit, emptySet(), today)
+
+        assertEquals(1, completedTodayStreak)
+        assertEquals(0, notCompletedTodayStreak)
+    }
+
+    @Test
+    fun `habit created today but not scheduled today has streak 0`() {
+        val today = LocalDate.of(2026, 4, 6) // Monday
+        val habit = Habit(
+            id = 1,
+            name = "Gym",
+            icon = HabitIcon.GYM,
+            frequency = setOf(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY),
+            createdAt = today
+        )
+
+        val streak = StreakCalculator.calculateCurrentStreak(habit, emptySet(), today)
+        assertEquals(0, streak)
+    }
+
+    @Test
+    fun `best streak preserves previous record when today is scheduled but not completed yet`() {
+        val today = LocalDate.of(2026, 4, 6) // Monday
+        val habit = Habit(
+            id = 1,
+            name = "Run",
+            icon = HabitIcon.RUN,
+            frequency = DayOfWeek.entries.toSet(),
+            createdAt = today.minusDays(5)
+        )
+        // Completed 5 days ago, 4 days ago, 3 days ago (streak 3), missed 2 days ago, completed yesterday, today not done
+        val completedDates = setOf(
+            today.minusDays(5),
+            today.minusDays(4),
+            today.minusDays(3),
+            today.minusDays(1)
+        )
+
+        val currentStreak = StreakCalculator.calculateCurrentStreak(habit, completedDates, today)
+        val bestStreak = StreakCalculator.calculateBestStreak(habit, completedDates, today)
+
+        assertEquals(1, currentStreak)
+        assertEquals(3, bestStreak)
+    }
 }
