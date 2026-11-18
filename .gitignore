@@ -1,12 +1,9 @@
 *.iml
 .gradle
 /local.properties
-<<<<<<< HEAD
 .kotlin/
 .idea/
 
-=======
->>>>>>> 4becd9350ed6b5f76fdee7bae360b5479df6f69b
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -19,9 +16,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-<<<<<<< HEAD
 .kotlin/
 .idea/
 
-=======
->>>>>>> 4becd9350ed6b5f76fdee7bae360b5479df6f69b

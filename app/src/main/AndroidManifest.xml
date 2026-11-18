@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-<<<<<<< HEAD
         android:name=".HabitTrackerApp"
-=======
->>>>>>> 4becd9350ed6b5f76fdee7bae360b5479df6f69b
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
