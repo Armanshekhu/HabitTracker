@@ -333,7 +333,7 @@ private fun HabitCard(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_check),
                     contentDescription = "Completed",
-                    tint = Color(0xFF0F0F15),
+                    tint = Color.White,
                     modifier = Modifier.size(14.dp)
                 )
             }

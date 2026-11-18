@@ -6,7 +6,7 @@ import com.plcoding.habittracker.R
 enum class HabitIcon(
     val id: String,
     val displayName: String,
-    @DrawableRes val iconRes: Int
+    @param:DrawableRes val iconRes: Int
 ) {
     RUN("run", "Run", R.drawable.ic_habit_run),
     READ("read", "Read", R.drawable.ic_habit_read),
